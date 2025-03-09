@@ -1,0 +1,282 @@
+<html>
+<head>
+<title>Word Manipulation Service</title>
+<style type="text/css">
+ h1 {
+      text-align: center;
+	  color:red;
+    }
+.bold{ font-weight: bold}
+.red {
+      color: red;
+    }
+    .yellow-bg {
+      background-color: yellow;
+    }
+
+    .font-size {
+      font-size: 20pt;
+    }
+	 table, th, td {
+      padding: 5px;
+    }
+	.n{background-color: yellow;  color: red;}
+    
+</style>
+<script>
+var cost=0;
+function start()
+{
+	var bname=document.getElementById("nameb");
+	bname.addEventListener("click",name,false);
+	bname.addEventListener("click",add,false);
+   radiobutton();
+   select();
+   check();
+  
+    var button2=document.getElementById("b2");
+   button2.addEventListener("click",Suggest_Password,false);
+   var button3=document.getElementById("b3");
+   button3.addEventListener("click",Capital_Small_Letter,false);
+   var button4=document.getElementById("b4");
+   button4.addEventListener("click",Full_Name_without_letter_a,false);
+   var button5=document.getElementById("b5");
+   button5.addEventListener("click",Reverse_Order_button,false);
+}
+function name()
+{
+	
+	var text=document.getElementById("name").value;
+	var t1=text.trim().split(" ");
+	var t="Please enter the name of four parts";
+	if(t1.length<4)
+	{
+		document.getElementById("h").innerHTML="Please enter the name of four parts";
+	}
+	else
+		document.getElementById("h").innerHTML="";
+	
+	 var button1=document.getElementById("b1");
+  button1.addEventListener("click",Suggest_Username,false);
+}
+function add()
+{
+	var tx=document.getElementById("name").value;
+	var td=document.getElementById("1");
+	td.innerText=tx;
+	}
+
+function radiobutton()
+{
+	
+	var r1=document.getElementById("r1");
+	var r2=document.getElementById("r2");
+	var r3=document.getElementById("r3");
+		r1.addEventListener("click",rchild,false);
+		r2.addEventListener("click",student,false);
+		r3.addEventListener("click",radult,false);
+}
+	function rchild()
+	{
+		var r1=document.getElementById("r1");
+var c=document.getElementById("no");
+c.innerText="Your age category is child NOT authorized to access this service";
+var t=document.getElementById("2");
+t.innerHTML=r1.value;
+   }
+
+	function student()
+	{
+		var r2=document.getElementById("r2");
+var s=document.getElementById("no");
+s.innerText="Your age category is student. you have a 25% discount on fees of service";
+var t=document.getElementById("2");
+t.innerHTML=r2.value;
+   }
+   
+	function radult()
+	{
+		var r3=document.getElementById("r3");
+var a=document.getElementById("no");
+a.innerText="Your age category is adult,you do not have any discount on fees of service";
+var t=document.getElementById("2");
+t.innerHTML=r3.value;
+	}
+	function select()
+	{
+		var s=document.getElementById("select"); 
+		s.addEventListener("click",select1,false);
+	}
+	function select1()
+	{
+		var s1=document.getElementById("select"); 
+		var s2=document.getElementById("3"); 
+		s2.innerHTML=s1.value;
+	}
+	function check()
+	{
+		var c=document.getElementById("yb");
+		var c1=document.getElementById("rd");
+		var c3=document.getElementById("fs");
+		var c4=document.getElementById("bf");
+		c.addEventListener("click",yb,false);
+		c1.addEventListener("click",rd,false);
+		c3.addEventListener("click",fs,false);
+		c4.addEventListener("click",bf,false);
+	}
+	function yb()
+	{
+		var t1=document.getElementById("t");
+		t1.style.background="yellow";
+	}
+	function rd()
+	{
+		var t1=document.getElementById("t");
+		t1.style.color="red";
+	}
+	function fs()
+	{
+
+		var t1=document.getElementById("t");
+	t1.style.fontSize="20pt";
+	}
+	function bf()
+	{
+		var t1=document.getElementById("t");
+		t1.style.fontWeight="bold";
+	}
+	
+	function Suggest_Username()
+	{
+		 var text = document.getElementById("name").value;
+  var t = text.trim().split(" ");
+  var t1 = t[0]; 
+  var t2 = text.slice(-2);
+  var username = t1.concat(t2);
+  var t = document.getElementById("4");
+  t.innerHTML = username;
+  cost+=20;
+ displayCost();
+  
+	}
+	function Suggest_Password() {
+  var text = document.getElementById("name").value;
+  var t = text.trim().split(" ");
+  var r = Math.floor(Math.random() * 4); 
+  var t1 = t[r]; 
+  var t2 = t1.substr(0, 3); 
+  var t3 = t[r]; 
+  var t4 = t3.slice(-3); 
+  var t5 = t2.concat(t4); 
+  var t6 = t5.length; 
+  var rsymobul=["$", "@", "&", "%"];
+  var randomSymbol = rsymobul[Math.floor(Math.random() * rsymobul.length)]; // Select a random symbol
+  var t7 = t4.concat(t6).concat(t5).concat(randomSymbol);; 
+  var t = document.getElementById("5");
+  t.innerHTML = t7;
+  cost+=20;
+   displayCost();
+}
+	function Capital_Small_Letter() {
+  var text = document.getElementById("name").value;
+  var t1 = text.trim().split(" ");
+  var t2 = t1[2]; // Get the third word from the sections
+  var hLength = Math.ceil(t2.length / 2); // Calculate the half length of the third word
+  
+  var t3 = t2.substr(0, hLength); // Get the first half of the third word
+  var t4 = t2.substr(hLength); // Get the second half of the third word
+  
+  var t5 = t3.toUpperCase() + t4.toLowerCase(); // Capitalize the first half and convert the second half to lowercase
+  
+  var t = document.getElementById("6");
+  t.innerHTML = t5;
+  cost+=5;
+  displayCost();
+}
+	function Full_Name_without_letter_a()
+	{
+		var text = document.getElementById("name").value;
+  var t1=text.replace(/a/gi,"");   
+  var t = document.getElementById("7");
+  t.innerHTML = t1;
+   cost+=10;
+   displayCost();
+  
+	}
+	function Reverse_Order_button()
+	{
+		var text = document.getElementById("name").value;
+		var s=text.split("");
+var reversed="";
+
+  for (var i = s.length - 1; i >= 0; i--) {
+    reversed += s[i];
+	
+  }
+		var t = document.getElementById("8");
+  t.innerHTML = reversed;
+	 cost+=15;
+	  displayCost();
+	}
+	function displayCost() {
+  var costElement = document.getElementById("9");
+  costElement.innerHTML = cost;
+	}
+	
+window.addEventListener("load",start,false);
+</script>
+</head>
+<body>
+<h1>Words Manipulation Service</h1>
+<form action = "#">
+
+<label class="bold">Enter your name(Four Sections)<input type="text" id="name"></label><input id="nameb" type="button" value="Add name">
+<div id="h" class="red"></div>
+  <br><br>
+<label class="bold">Choose age category </label>
+<br>
+  <label><input type="radio" id="r1" name="age" value="child category ">less than 18 years old </label>
+  <label><input type="radio" id="r2" name="age" value="Student category">18 – 28 years old </label>
+  <label><input type="radio" id="r3" name="age" value="Adult category ">more than 28 years old </label>
+  <div id="no" class="n"></div>
+  <br><br>
+ <label class="bold">Choose Governate Category</label>
+ <br>
+ <select id="select">
+ <option>North Governate</option>
+ <option>Middle Governate</option>
+ <option>South Governate</option>
+ <option>West Governate</option>
+ <option>East Governate</option></select>
+ <br><br>
+ <label class="bold">Choose words manipulation service</label>
+ <br>
+ <input id="b1" type="button" value="Suggest Username">
+ <input id="b2" type="button" value="Suggest Password">
+ <input id="b3" type="button" value="Capital / Small Letter">
+ <input id="b4" type="button" value="Full Name without letter “a” ">
+ <input id="b5" type="button" value="Reverse Order">
+ <br><br>
+ <label class="bold">Choose style for  summary of your service</label>
+ <br>
+<label>yellow background <input type="checkbox" id="yb"> </label>
+<label>red font <input type="checkbox" id="rd" > </label>
+<label>20 pt font size <input type="checkbox" id="fs"> </label>
+<label>bold font <input type="checkbox" id="bf" > </label>
+<br><br>
+<table border="5" id="t">
+<thead><caption>Information of your service</caption><td>Full Name</td><td id="1"></td></thead>
+<tbody>
+<tr><td>Age Category</td><td id="2"></td></tr>
+<tr><td>Governorate category</td><td id="3"></td></tr>
+<tr><td>Suggested username</td><td id="4"></td></tr>
+<tr><td>Suggested_password</td><td id="5"></td></tr>
+<tr><td>Capital / small letter</td><td id="6"></td></tr>
+<tr><td>Full name without letter 'a'</td><td id="7"></td></tr>
+<tr><td>Full name in reverse order:</td><td id="8"></td></tr>
+<tr><td>Cost of the services</td><td id="9"></td></tr>
+</tbody>
+</table>
+      </form>
+</body>
+</html>
