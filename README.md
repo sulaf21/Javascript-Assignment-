@@ -1,1 +1,2 @@
-# Javascript-Assignment-
+This is a very simple university assignment for the course of web applications using Javascript/HTML/CSS. Although simple, should show my ability in writing good logic, this was done in my third year as a software engineering student.
+It is here to show my evolution in writing code, I will make sure to register all projects from small to large, from beginner to advanced , so I can always go back and see how I started.
